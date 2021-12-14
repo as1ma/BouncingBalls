@@ -30,17 +30,17 @@ class Ball {
         if (this.x > c.width - this.radius || this.x < this.radius) {
             this.dx = -this.dx;
         }
-        if (this.y > c.height - this.radius || this.y < 0) {
+        if (this.y > c.height - this.radius || this.y < this.radius) {
             this.dy = -this.dy;
         }
     }
 }
-const numberOfBalls = 10;
+requestAnimationFrame(cycle);
+const numberOfBalls = 100;
 const balls = [];
 for (let i = 0; i < numberOfBalls; i++) {
-    balls.push(new Ball(300, 400, (Math.random() - .5 * 10), 0, 2 * Math.PI));
+    balls.push(new Ball(250, 450, (Math.random() - .5 * 10), (Math.random() * 10), (Math.random() * 20)));
 }
-requestAnimationFrame(cycle);
 function cycle() {
     ctx.clearRect(0, 0, 500, 500);
     for (let i = 0; i < numberOfBalls; i++) {
