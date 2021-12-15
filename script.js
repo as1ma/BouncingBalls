@@ -37,7 +37,7 @@ class Ball {
 }
 requestAnimationFrame(cycle);
 const numberOfBalls = 100;
-const balls = [];
+let balls = [];
 for (let i = 0; i < numberOfBalls; i++) {
     balls.push(new Ball(250, 450, (Math.random() - .5 * 10), (Math.random() * 10), (Math.random() * 20)));
 }
@@ -45,14 +45,15 @@ let goButton = document.getElementById("Button");
 goButton.addEventListener("click", makeBalls);
 function makeBalls() {
     let numBalls = parseInt(document.getElementById("numberOfBalls").value);
+    balls.length = 0;
     for (let i = 0; i < numBalls; i++) {
         balls.push(new Ball(250, 450, (Math.random() - .5 * 10), (Math.random() * 10), (Math.random() * 20)));
     }
-    //requestAnimationFrame(cycle)
+    return balls;
 }
 function cycle() {
     ctx.clearRect(0, 0, 500, 500);
-    for (let i = 0; i < numberOfBalls; i++) {
+    for (let i = 0; i < balls.length; i++) { //need to ref num balls or updated list
         balls[i].drawBall();
         balls[i].move();
         balls[i].CheckBounce();
