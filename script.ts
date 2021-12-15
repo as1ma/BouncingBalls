@@ -44,11 +44,21 @@ class Ball{
     }
 }
 requestAnimationFrame(cycle)
-const numberOfBalls = 100
+const numberOfBalls:number = 100
 const balls:Ball[] = []
 for (let i = 0; i<numberOfBalls; i++){
-    balls.push(new Ball(250,450,(Math.random()-.5*10),(Math.random()*10),(Math.random()*20))
-    
+    balls.push(new Ball(250,450,(Math.random()-.5*10),(Math.random()*10),(Math.random()*20)))
+}
+
+let goButton = document.getElementById("Button")
+goButton!.addEventListener("click", makeBalls)
+
+function makeBalls(){
+    let numBalls = parseInt((<HTMLInputElement>document.getElementById("numberOfBalls")).value) 
+    for (let i = 0; i<numBalls; i++){
+        balls.push(new Ball(250,450,(Math.random()-.5*10),(Math.random()*10),(Math.random()*20)))
+    }
+    //requestAnimationFrame(cycle)
 }
 
 function cycle(){
